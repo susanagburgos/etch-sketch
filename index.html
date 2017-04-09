@@ -1,0 +1,83 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+
+  <!-- to get rid of favicon request in console -->
+  <link rel="shortcut icon" href="">
+
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Pacifico" rel="stylesheet">
+
+  <!-- set viewport - for responsive -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- P5  -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.8/p5.js"></script>
+  <script language="javascript" type="text/javascript" src="sketch.js"></script>
+
+  <!-- SOCKET.IO  -->
+  <script type="text/javascript" src="/socket.io/socket.io.js"> </script>
+  
+  <script>
+      // SOCKET STUFF
+      var socket = io.connect();
+
+      socket.on('connect', function() {
+        console.log("Connected");
+      });
+
+      socket.on('sensor', function(data){
+        //splitting the values at the comma
+        console.log(data);
+
+        var values = split(data, ",");
+
+        sensorOne = Number(values[0]);
+        sensorTwo = Number(values[1]); 
+        
+      });
+
+  </script>
+
+  <style> 
+
+    div {
+      flex-direction: row;
+    }
+
+    body {
+      padding: 0; 
+      margin: 0;
+      display: flex; 
+
+      justify-content: space-around;
+      align-items: center;
+      
+      background-color: rgb(0, 153, 95);
+);
+    }
+   
+    h1 {
+      font-family: 'Pacifico', cursive;
+      color: white; 
+    }
+
+    h2 {
+      font-family: 'Amatic SC', cursive;
+      color: white; 
+      margin-top: -10px;
+    }
+  
+  </style>
+</head>
+
+<body>
+  <div> 
+    <h1> Etch &amp; Sketch </h1>
+    <h2> The Digital Magic Screen <h2> 
+    <img src="white-daisy.gif">
+  </div>
+</body>
+</html>
+
+
+
